@@ -6,20 +6,23 @@
 </head>
 <body>
 
-<form method="post">
-    <input type="number" name="number1">
-    <select name="operation">
-        <option value="sum">+</option>
-        <option value="difference">-</option>
-        <option value="multiplication">*</option>
-        <option value="dividing">/</option>
-    </select>
-    <input type="number" name="number2">
-    <input type="submit" value="OK">
-</form>
+<input type="text">
 <br>
-<p><?= $result ?></p>
+<br>
 
+<div>
+    <button class="action" name="sum">+</button>
+    <button class="action" name="difference">-</button>
+    <button class="action" name="multiplication">*</button>
+    <button class="action" name="division">/</button>
+</div>
+
+<br>
+<br>
+<button class="equality">=</button>
+
+
+<script src="script.js"></script>
 
 
 </body>
