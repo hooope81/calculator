@@ -15,7 +15,6 @@ function getAction(numb1, numb2, action) {
         case "difference": return numb1 - numb2;
         case "multiplication": return numb1 * numb2;
         case "division": return numb1 / numb2;
-
     }
 }
 
@@ -23,76 +22,78 @@ function getResult() {
     numb = +input.value;
     result = getAction(result, numb, action);
     input.value = result;
-    console.log(result);
 }
 
 buttons.forEach(item => {
     item.addEventListener('click', () => {
 
+        let button = item['name'];
 
+        if(button === "changeSign") {
+            addMinus();
 
-        if(item['name'] === "changeSign") {
-            if (!result) {
-                result = -input.value;
-                input.value = result;
-                changeSign = true;
-                console.log(numb, result,action);
-            } else {
-                numb = -input.value;
-                input.value = numb;
-            }
+        } else if(button === "clean") {
+            getZero();
 
-
-        } else if(item['name'] === "clean") {
-            result = 0;
-            numb = 0;
-            input.value = '0';
-
-        } else if(item['name'] === "percent") {
-            if (!result) {
-               result = +input.value * 100 / result;
-            }
-            numb = +input.value * 100 / result;
-            input.value = numb;
+        } else if(button === "percent") {
+            getPercent();
 
         } else {
             if(!result) {
                 result = +input.value;
-                action = item['name'];
                 input.value = result;
 
             } else {
-                if(changeSign){
-                    action = item['name'];
-                } else {
+                if(!changeSign){
                     numb = +input.value;
                     result = getAction(result, numb, action);
-                    action = item['name'];
                     input.value = result;
                 }
-
-
             }
+            action = button;
             input.value = '';
         }
-        console.log(result);
-
     })
 })
 
-equality.addEventListener('click',() => {
-    getResult();
-    result = 0;
-    console.log(result);
-    // console.log(numb);
-});
-
 digits.forEach(item => {
     item.addEventListener('click', () => {
-       if(input.value === '0') {
+        if(input.value === '0') {
             input.value = item.textContent;
         } else {
             input.value += item.textContent;
         }
     })
 })
+
+function addMinus() {
+    if (!result) {
+        result = -input.value;
+        input.value = result;
+        changeSign = true;
+        console.log(numb, result,action);
+    } else {
+        numb = -input.value;
+        input.value = numb;
+    }
+}
+
+function getZero() {
+    result = 0;
+    numb = 0;
+    input.value = '0';
+}
+
+function getPercent() {
+    if (!result) {
+        result = +input.value * 100 / result;
+    }
+    numb = +input.value * 100 / result;
+    input.value = numb;
+}
+
+equality.addEventListener('click',() => {
+    getResult();
+    result = 0;
+});
+
