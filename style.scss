@@ -2,15 +2,15 @@
 
 }
 .wrapper {
-  max-width: 300px;
-  background-color: #2bad80;
+  max-width: 350px;
+  background-color: #4a289f;
   padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 5%;
   border: 5px solid lightseagreen;
-  margin: 20% auto 0;
+  margin: 7% auto 0;
 }
 input {
   width: 95%;
@@ -33,7 +33,6 @@ input {
   border: none;
   cursor: pointer;
   font-size: 25px;
-  font-family: Chandas;
 
   &__box {
     display: flex;
@@ -44,7 +43,7 @@ input {
   &__inner {
     display: flex;
     justify-content: space-between;
-
+    padding: 0 15px;
   }
 }
 .action {
@@ -56,4 +55,15 @@ input {
 .equality {
   width: 45%;
   background-color: #ee67f3;
+}
+.hidden {
+  margin: 5% auto 0;
+  max-width: 320px;
+  height: 75px;
+  border: solid 5px rebeccapurple;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+  color: #4a289f;
+  background-color: #caf3e7;
 }
