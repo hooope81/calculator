@@ -1,5 +1,5 @@
 .wrapper {
-  max-width: 350px;
+  max-width: 300px;
   background-color: #4a289f;
   padding: 25px;
   display: flex;
@@ -42,7 +42,6 @@ input {
 .button__inner {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
 }
 
 .action {

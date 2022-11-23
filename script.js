@@ -11,6 +11,8 @@ let changeSign = false;
 let errorBox = document.querySelector('.error');
 let errorText = '';
 
+input.value = '0';
+
 let ruleNotLetter = /^[0-9]*[.,]?[0-9]*[e+]*[0-9]*$/;
 console.log(ruleNotLetter.test('9.99999999998e+23'));
 
@@ -41,6 +43,7 @@ function checkRule(inputValue) {
         errorText = '';
         errorBox.textContent = '';
         errorBox.classList.remove('hidden');
+
     }
 }
 
@@ -70,6 +73,7 @@ buttons.forEach(item => {
         checkRule(input.value);
 
         let button = item['name'];
+
 
         if(button === "changeSign") {
             addMinus();
@@ -101,7 +105,7 @@ buttons.forEach(item => {
 
 digits.forEach(item => {
     item.addEventListener('click', () => {
-        if(input.value === '0') {
+        if(input.value === '0' && item.textContent !== '.') {
             input.value = item.textContent;
         } else {
             input.value += item.textContent;
@@ -124,22 +128,30 @@ function addMinus() {
 function getZero() {
     result = 0;
     numb = 0;
+    action = '';
     input.value = '0';
 }
 
 function getPercent() {
-    if (!result) {
-        result = +input.value * 100 / result;
-    }
-    numb = +input.value * 100 / result;
+    numb = +input.value * result / 100;
     input.value = numb;
 }
 
 function getNumberFormat(result) {
+    if (!result) {
+        return 0;
+    }
 
     if (String(result).length <= 12) {
         console.log("*");
         return result;
+    }
+
+    let power = Math.pow(10, 14);
+    let intermediate = String(Math.round(
+                    result * power) / power);
+    if (intermediate.length <= 12) {
+        return intermediate;
     }
 
     if (String(result).includes('.') &&
